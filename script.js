@@ -85,3 +85,62 @@ let phonesWithDiscount = expensivePhones.map((item) => {
 });
 
 console.log(phonesWithDiscount);
+
+//3.UUFE Самовыполняющаяся функция
+
+(function () {
+  var localVar = 100;
+
+  window.foo = function () {
+    console.log(localVar++);
+  };
+})();
+foo();
+
+//Задание
+(function () {
+  var count = 0;
+
+  window.incrementCounter = function () {
+    count++;
+    console.log("Счетчик: " + count);
+  };
+
+  window.decrementCounter = () => {
+    //создание 2 функции
+    count--;
+    console.log("Счетчик: " + count);
+  };
+})();
+
+incrementCounter(); // 1
+incrementCounter(); // 2
+
+incrementCounter();
+decrementCounter();
+
+//Тест-задание: «Счетчик в заточении»
+var counter = (function () {
+  var count = 0;
+
+  return {
+    increment: function () {
+      //метод объекта counter.increment()
+      count++; // инкрементирует
+      return count;
+    },
+    reset: function () {
+      //метод объекта counter.reset()
+      count = 0; // обнуляет count до 0 и возвращает "Сброшено"
+      return "Сброшено";
+    },
+  };
+})();
+
+console.log(counter.increment()); // 1
+console.log(counter.increment()); // 2
+console.log(counter.reset()); // Сброшено
+
+console.log(typeof count); // undefined
+console.log(counter.count); //undefined
+ц;
